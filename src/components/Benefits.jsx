@@ -70,21 +70,27 @@ export default function Benefits() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.05 }}
-                  className="group rounded-2xl border border-white/10 bg-white/5 p-5 hover:bg-white/10 transition shadow-[0_0_0_1px_rgba(255,255,255,0.04)]"
+                  className="group relative"
                 >
-                  <div className="h-10 w-10 rounded-lg bg-gradient-to-tr from-[#77CD20] to-emerald-400 text-black grid place-items-center shadow shadow-emerald-500/30">
-                    <b.icon size={18} />
+                  {/* Animated gradient border */}
+                  <div className="absolute -inset-[1px] rounded-2xl p-[1px]">
+                    <div className="h-full w-full rounded-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-300 animate-[spin_10s_linear_infinite] bg-[conic-gradient(var(--tw-gradient-stops))] from-[#77CD20] via-[#6B5BFF] via-50% to-[#FF9D47]" aria-hidden />
                   </div>
-                  <h3 className="mt-4 font-semibold text-white">{b.title}</h3>
-                  <p className="mt-1 text-sm text-white/70">{b.desc}</p>
+                  <div className="relative rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
+                    <div className="h-10 w-10 rounded-lg bg-gradient-to-tr from-[#77CD20] to-emerald-400 text-black grid place-items-center shadow shadow-emerald-500/30">
+                      <b.icon size={18} />
+                    </div>
+                    <h3 className="mt-4 font-semibold text-white">{b.title}</h3>
+                    <p className="mt-1 text-sm text-white/70">{b.desc}</p>
+                  </div>
                 </motion.div>
               ))}
             </div>
           </div>
 
           <div className="relative mt-6 md:mt-0">
-            <div className="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-[#77CD20]/40 to-emerald-400/30 blur-xl" aria-hidden />
-            <div className="relative rounded-3xl border border-white/10 bg-black/60 p-6 sm:p-8">
+            <div className="absolute -inset-1 rounded-3xl bg-[conic-gradient(var(--tw-gradient-stops))] from-[#77CD20]/35 via-[#6B5BFF]/25 to-[#FF9D47]/30 blur-xl" aria-hidden />
+            <div className="relative rounded-3xl border border-white/10 bg-black/60 p-6 sm:p-8 backdrop-blur-sm">
               <div className="grid gap-4 sm:grid-cols-2">
                 {[
                   { title: 'Custom Web Apps', k: 'A' },
@@ -92,11 +98,16 @@ export default function Benefits() {
                   { title: '3D Modeling', k: 'C' },
                   { title: '3D Printing', k: 'D' },
                 ].map((s) => (
-                  <div key={s.title} className="rounded-2xl border border-white/10 bg-white/5 p-5">
-                    <div className="text-xs text-white/50">Service</div>
-                    <div className="mt-1 font-medium text-white">{s.title}</div>
-                    <div className="mt-4 h-2 w-full rounded-full bg-white/10 overflow-hidden">
-                      <div className="h-full w-1/2 bg-gradient-to-r from-[#77CD20] to-emerald-400" />
+                  <div key={s.title} className="group relative">
+                    <div className="absolute -inset-[1px] rounded-2xl p-[1px]">
+                      <div className="h-full w-full rounded-2xl opacity-70 group-hover:opacity-100 transition-opacity duration-300 animate-[spin_12s_linear_infinite] bg-[conic-gradient(var(--tw-gradient-stops))] from-[#77CD20] via-[#6B5BFF] via-50% to-[#FF9D47]" aria-hidden />
+                    </div>
+                    <div className="relative rounded-2xl border border-white/10 bg-white/5 p-5">
+                      <div className="text-xs text-white/50">Service</div>
+                      <div className="mt-1 font-medium text-white">{s.title}</div>
+                      <div className="mt-4 h-2 w-full rounded-full bg-white/10 overflow-hidden">
+                        <div className="h-full w-1/2 bg-gradient-to-r from-[#77CD20] to-emerald-400" />
+                      </div>
                     </div>
                   </div>
                 ))}

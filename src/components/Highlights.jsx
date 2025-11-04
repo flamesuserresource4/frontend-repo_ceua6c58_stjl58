@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Users, Briefcase, Star, Box } from 'lucide-react';
+import { Users, Briefcase, Box } from 'lucide-react';
 
 const team = [
   {
@@ -69,14 +69,19 @@ export default function Highlights() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="group overflow-hidden rounded-2xl border border-white/10 bg-white/5"
+              className="group relative"
             >
-              <div className="aspect-[4/3] overflow-hidden">
-                <img src={m.img} alt={m.name} className="h-full w-full object-cover group-hover:scale-105 transition duration-500" />
+              <div className="absolute -inset-[1px] rounded-2xl p-[1px]">
+                <div className="h-full w-full rounded-2xl opacity-70 group-hover:opacity-100 transition-opacity duration-300 animate-[spin_14s_linear_infinite] bg-[conic-gradient(var(--tw-gradient-stops))] from-[#77CD20] via-[#6B5BFF] via-50% to-[#FF9D47]" aria-hidden />
               </div>
-              <div className="p-4">
-                <div className="font-semibold text-white">{m.name}</div>
-                <div className="text-sm text-white/70">{m.role}</div>
+              <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img src={m.img} alt={m.name} className="h-full w-full object-cover group-hover:scale-105 transition duration-500" />
+                </div>
+                <div className="p-4">
+                  <div className="font-semibold text-white">{m.name}</div>
+                  <div className="text-sm text-white/70">{m.role}</div>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -105,20 +110,25 @@ export default function Highlights() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="group overflow-hidden rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition"
+              className="group relative"
             >
-              <div className="aspect-video overflow-hidden">
-                <img src={p.img} alt={p.title} className="h-full w-full object-cover group-hover:scale-105 transition duration-500" />
+              <div className="absolute -inset-[1px] rounded-2xl p-[1px]">
+                <div className="h-full w-full rounded-2xl opacity-70 group-hover:opacity-100 transition-opacity duration-300 animate-[spin_12s_linear_infinite] bg-[conic-gradient(var(--tw-gradient-stops))] from-[#77CD20] via-[#6B5BFF] via-50% to-[#FF9D47]" aria-hidden />
               </div>
-              <div className="p-5">
-                <div className="flex items-center gap-2 text-xs">
-                  <span className="inline-flex items-center gap-1 rounded-full border border-emerald-400/20 bg-emerald-500/10 px-2 py-1 text-emerald-300">
-                    <Box size={14} /> {p.category}
-                  </span>
+              <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition">
+                <div className="aspect-video overflow-hidden">
+                  <img src={p.img} alt={p.title} className="h-full w-full object-cover group-hover:scale-105 transition duration-500" />
                 </div>
-                <h3 className="mt-3 font-semibold text-white">{p.title}</h3>
-                <p className="mt-1 text-sm text-white/70">{p.summary}</p>
-                <a href="#projects" className="mt-3 inline-flex items-center text-sm text-emerald-300 hover:text-emerald-200">Read case study →</a>
+                <div className="p-5">
+                  <div className="flex items-center gap-2 text-xs">
+                    <span className="inline-flex items-center gap-1 rounded-full border border-emerald-400/20 bg-emerald-500/10 px-2 py-1 text-emerald-300">
+                      <Box size={14} /> {p.category}
+                    </span>
+                  </div>
+                  <h3 className="mt-3 font-semibold text-white">{p.title}</h3>
+                  <p className="mt-1 text-sm text-white/70">{p.summary}</p>
+                  <a href="#projects" className="mt-3 inline-flex items-center text-sm text-emerald-300 hover:text-emerald-200">Read case study →</a>
+                </div>
               </div>
             </motion.article>
           ))}
